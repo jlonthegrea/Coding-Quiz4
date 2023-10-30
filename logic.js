@@ -12,31 +12,35 @@ var initialsEl = document.getElementById('initials');
 var feedbackEl = document.getElementById('feedback');
 
 function startQuiz() {
+    console.log('startQuiz');
     var startScreenEl = document.getElementById('start-screen');
+    console.log(startScreenEl);
     startScreenEl.setAttribute('class', 'hide');
 
     questionsEl.removeAttribute('class');
-    timerId = setInterval(clockTick, 1000);
+    console.log(questionsEl);
+   // timerId = setInterval(clockTick, 1000);
 
     getQuestion();
 }
 
 function getQuestion() {
+    console.log('getQuestion');
     var currentQuestion = questions[currentQuestionIndex];
-    var titleEl = document.getElementById('question-title');
+    console.log(currentQuestion);
+    var titleEl = document.getElementById('questions-title');
     titleEl.textContent = currentQuestion.title;
-
     optionsEl.innerHTML = '';
 
     for ( var i = 0; 1 < currentQuestion.options.length; i++) {
-        var option = currentQuestion.options[i];
-        var optionNode = document.getElementById('button');
-        optionNode.setAttribute('class', 'option');
-        optionNode.setAttribute('value', option);
+        var options = currentQuestion.options[i];
+        var optionsNode = document.createElement('button');
+        optionsNode.setAttribute('class', 'options');
+        optionsNode.setAttribute('value', options);
 
-        optionNode.textContent = i + 1 + '.' + option;
+        optionsNode.textContent = i + 1 + '.' + options;
 
-        optionsEl.appendChild(optionNode);
+        optionsEl.appendChild(optionsNode);
     }
 }
 
@@ -58,6 +62,9 @@ function quizEnd() {
     questionsEl.setAttribute('class', 'hide');
 }
 
+
+
+
 function clockTick(){
     time--;
     timerEl.textContent =time;
@@ -78,5 +85,5 @@ function saveHighscore() {
 
 startBtn.onclick = startQuiz;
 submitBtn.onclick = saveHighscore;
-optionsEl.onclick = quiestionClick;
-initialsEl.onkeyup = checkForEnter;
+optionsEl.onclick = questionClick;
+
