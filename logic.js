@@ -74,7 +74,7 @@ function renderQuestions() {
     choiceContainer.innerHTML='';
     questionContainer.classList.remove('hide');
     console.log(questions[currentQuestionIndex].text)
-    questions.textContent= questions[currentQuestionIndex].text;
+    questionContainer.textContent= questions[currentQuestionIndex].title;
 
     for (i = 0; i < questions[currentQuestionIndex].choices.length; i++){
         var choiceBtn =document.createElement('button');
@@ -107,11 +107,13 @@ function questionClick (e) {
     console.log(userAsnwer === questions[currentQuestionIndex].correctAnswer)
 }
 
+
+
 var startQuiz = function(){
     renderQuestions();
 }
 
-choiceContainer.addEventListener("click", questionClick)
+choiceContainer.addEventListener("click", choiceContainer)
 startButton.addEventListener("click", startQuiz)
 
 // Timer
@@ -128,19 +130,9 @@ startButton.addEventListener("click", function() {
 });
 
 startButton.addEventListener("click", function(){
-    
+
 })
 
-// Display Questions
-// startButton.addEventListener("click", function() {
-//     var NextQuestion = setInterval(function(){
-//         if (currentQuestionIndex >= questions.length){
-//             questions.textContent = "Game Over"
-//         } else {
-//             renderQuestions;
 
-//         }
-//     })
-// })
 
 

@@ -23,6 +23,9 @@ display:block;
 .title{
 border-bottom: 1px solid lightgray;
 }
+.choices{
+    text-align: center;
+}
 .info-box{
 width: 540px;
 border-radius: 5px;
