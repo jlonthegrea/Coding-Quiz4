@@ -63,9 +63,7 @@ var questions = [{
 ]
 
 
-
-
-// Storing Highscores in Local Storage 
+ 
 function resetGame() {
     var person_initials = document.querySelector("#person_initials").value;
     localStorage.setitem("highScore", currentTime);
@@ -76,11 +74,48 @@ function renderQuestions() {
     choiceContainer.innerHTML='';
     questionContainer.classList.remove('hide');
     console.log(questions[currentQuestionIndex].text)
-    
+    questions.textContent= questions[currentQuestionIndex].text;
+
+    for (i = 0; i < questions[currentQuestionIndex].choices.length; i++){
+        var choiceBtn =document.createElement('button');
+        choiceBtn.style.display = 'block';
+        choiceBtn.classList.add('choice-btn')
+        choiceBtn.textContent = questions[currentQuestionIndex].choices[i]
+        choiceContainer.append(choiceBtn);
+    }
+
+    };
+
+function questionClick (e) {
+    if (!e.target.matches('.choices-btn')) {
+        return;
+    }
+    var userAnswer = e.target.textContent.split(' ')[2];
+    console.log(userAnswer);
+    if(userAnswer === questions[currentQuestionIndex].correctAnswer){
+        console.log("CORRECT!")
+    } else {
+        console.log("WRONG")
+    }
+
+    if (currentQuestionIndex >= questions.length -1){
+        console.log("Quiz Over!")
+        return;
+    }
+    currentQuestionIndex==
+    renderQuestions();
+    console.log(userAsnwer === questions[currentQuestionIndex].correctAnswer)
 }
+
+var startQuiz = function(){
+    renderQuestions();
+}
+
+choiceContainer.addEventListener("click", questionClick)
+startButton.addEventListener("click", startQuiz)
+
 // Timer
 startButton.addEventListener("click", function() {
-    renderQuestions();
     var timerStart = setInterval(function (){
         if (currentTime >= 0) {
             timer.textContent= currentTime;
@@ -92,5 +127,20 @@ startButton.addEventListener("click", function() {
     },1000)
 });
 
+startButton.addEventListener("click", function(){
+    
+})
+
+// Display Questions
+// startButton.addEventListener("click", function() {
+//     var NextQuestion = setInterval(function(){
+//         if (currentQuestionIndex >= questions.length){
+//             questions.textContent = "Game Over"
+//         } else {
+//             renderQuestions;
+
+//         }
+//     })
+// })
 
 
