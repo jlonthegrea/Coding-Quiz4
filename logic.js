@@ -1,89 +1,85 @@
+var startButton = document.querySelector("#start-quiz");
+var timer = document.querySelector("#timer");
+var questionContainer = document.querySelector(".questions");
+var choiceContainer = document.querySelector(".choices");
+var result = document.querySelector(".results");
+var endScreen = document.querySelector(".end-screen");
+var finalScore = document.querySelector(".final-score");
 
-var currentQuestionIndex = 0;
-var time = questions.length * 15;
-var timerId;
+var buttonAnswer1 = document.querySelector("#answer1");
+var buttonAnswer2 = document.querySelector("#answer2");
+var buttonAnswer3 = document.querySelector("#answer3");
+var buttonAnswer4 = document.querySelector("#answer4");
+var buttonAnswer5 = document.querySelector("#answer5");
+var buttonAnswer6 = document.querySelector("#answer6");
+var buttonAnswer7 = document.querySelector("#answer7");
 
-var questionsEl = document.getElementById('questions');
-var timerEl = document.getElementById('time');
-var optionsEl = document.getElementById('options');
-var submitBtn = document.getElementById('submit');
-var startBtn = document.getElementById('start');
-var initialsEl = document.getElementById('initials');
-var feedbackEl = document.getElementById('feedback');
+var initialsInput = document.querySelector(".initials.form");
 
-function startQuiz() {
-    console.log('startQuiz');
-    var startScreenEl = document.getElementById('start-screen');
-    console.log(startScreenEl);
-    startScreenEl.setAttribute('class', 'hide');
+var timeLeft = 60;
+var currentQuestion = 0;
+var currentTime = timer.textcontent;
+var setInterval;
 
-    questionsEl.removeAttribute('class');
-    console.log(questionsEl);
-   // timerId = setInterval(clockTick, 1000);
 
-    getQuestion();
+
+
+
+// Question List
+var questions = [{
+        title: "Commonly used data types do NOT include:",
+        choices: ["Booleans", "Alerts", "Strings", "Numbers"],
+        answer: 'Alerts',
+},
+ {
+        title: "The condition of an if/else statement is enclosed within ___.",
+        choices: ["Parentheses", "Curly Brackets", "Quotes", "Square Brackets"],
+        answer: 'Parentheses'
+},
+{
+        title: "Arrays in JavaScript can be used to store ___.",
+        choices: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+        answer: 'All of the above'
+},
+{
+        title: "String values must be enclosed within ___ when being assigned a variable.",
+        choices: ["Commas", "Pound Sign", "Quotes", "Parentheses"],
+        answer: "Quotes"
+},
+{
+        title: "A very useful tool used during development and debugging for printing content to the debugger is: ",
+        choices: ["Javascript","Terminal/Bash", "console.log", "for loop"],
+        answer: 'console.log'
+},
+{
+        title: "Using ___ statement is how you test for a condition.",
+        choices: ["Select", "If", "Switch", "For"],
+        answer:'If'
+},
+
+{
+        title: "Javascript is interpreted by ___",
+        choices: ['Client', 'Server','Object','None of the above'],
+        answer: 'Client'
+},
+]
+    console.log(questions);
+
+
+
+// Storing Highscores in Local Storage 
+function resetGame() {
+    var person_initials = document.querySelector("#person_initials").value;
+    localStorage.setitem("highScore", currentTime);
+    localStorage.setItem(person_initials, currentTime);
 }
+// Timer
+startButton.addEventListener("click", function(event) {
+    var event = setInterval(function (){
+        currentTime--;
+    },1000)
+});
 
-function getQuestion() {
-    console.log('getQuestion');
-    var currentQuestion = questions[currentQuestionIndex];
-    console.log(currentQuestion);
-    var titleEl = document.getElementById('questions-title');
-    titleEl.textContent = currentQuestion.title;
-    optionsEl.innerHTML = '';
-
-    for ( var i = 0; 1 < currentQuestion.options.length; i++) {
-        var options = currentQuestion.options[i];
-        var optionsNode = document.createElement('button');
-        optionsNode.setAttribute('class', 'options');
-        optionsNode.setAttribute('value', options);
-
-        optionsNode.textContent = i + 1 + '.' + options;
-
-        optionsEl.appendChild(optionsNode);
-    }
-}
-
-function questionClick(event){
-    var buttonEl = event.target;
-
-timerEl = textContent = time;
-currentQuestionIndex++;
-}
-
-function quizEnd() {
-    clearInterval(timerId);
-    var endScreenEl =document.getElementById('end-screen');
-    endScreenEl.removeAttribute('class');
-
-    var finalScoreEl = document.getElementById('final-score');
-    finalScoreEl.textContent = time;
-
-    questionsEl.setAttribute('class', 'hide');
-}
-
-
-
-
-function clockTick(){
-    time--;
-    timerEl.textContent =time;
-    if (time <= 0){
-        quizEnd();
-    }
-}
-function saveHighscore() {
-    var initials = initialsEl.ariaValueMax.trim();
-    var newScore = {
-        score: time,
-        initials: initials,
-    };
-    highscores.push(newScore);
-    window.localStorage.setItem('highscores', JSON.stringify(highscores));
-    window.location.href = 'highscores.html';
-}
-
-startBtn.onclick = startQuiz;
-submitBtn.onclick = saveHighscore;
-optionsEl.onclick = questionClick;
-
+// var buttons = document.querySelectorAll(".choice-choice").forEach(function (item){
+//     item.addEventListener("click", checkAnswer);
+// });

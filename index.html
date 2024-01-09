@@ -9,33 +9,50 @@
 
 <body>
     <div class="scores"><a href="highscores.html">View Highscores</a></div>
-    <div class="timer">Time: <span id="time">0</span></div>
+    <div class="time">Time: <span id="timer">60</span></div>
 
     <div class="container">
         <div id="start-screen" class="start">
             <h1> Web API: Coding Quiz </h1>
-            <p>
-                Answer the following questions that are presented within the time limit given. If you answer a question incorrect then your score will decrease along with a deduction of time.
-            </p>
-        <div class="buttons">
-            <button id="start"> Start Quiz </button>
+            <p> Answer the following questions that are presented within the time limit given!</p>
+            <p> If you answer a question incorrect then your score will decrease along with a deduction of time.</p> 
+            <p> The time that is left will be your final score. </p>
+    </div>
+        <div class="control-button">
+            <button type= "button" id="start-quiz"> Start Quiz </button>
         </div>
+
+    <main>
+        <div class="questions">
+        <h2 id="questions-title"> Multiple Choice! </h2>
         </div>
+
+        <div class="choices"></div>
+            <button class="choice-choice" id="answer1"> </button>
+            <button class="choice-choice" id="answer2"> </button>
+            <button class="choice-choice" id="answer3"> </button>
+            <button class="choice-choice" id="answer4"> </button>
+            <button class="choice-choice" id="answer5"> </button>
+            <button class="choice-choice" id="answer6"> </button>
+            <button class="choice-choice" id="answer7"> </button>
+        </div>  
+
+     <div class="end-screen">
+        <div> 
+            <p class="final-score"></p>
         </div>
-        <div id="questions" class="hide">
-        <h2 id="questions-title"> Jaylon </h2>
-        <div id="options" class="options"></div>
+        <div> 
+            <form action="highscores.html" class="initial-form"> 
+            Enter Initials Here: <input type="text" name="initials" id="person_initials" max="3">
+            <input type="submit" class="submit" onclick="resetGame()">
+            </form>
         </div>
-     <div id="end-screen" class="hide">
-        <h2> You're Done! </h2>
-        <p> Your final score is <span id="final-score"></span></p>
-        <p> Enter Initials Here: <input type="text" id="initials" max="3"/>
-        <button id="submit">Submit</button>
-        </p>
     </div>
 
-    <div id="feedback" class="feedback hide"></div>
+    <div class="feedback">
+        <p class="results"></p>
     </div>
+    </main>
 
     <script src="question.js"></script>
     <script src="logic.js"></script>
