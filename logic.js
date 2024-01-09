@@ -16,12 +16,10 @@ var buttonAnswer7 = document.querySelector("#answer7");
 
 var initialsInput = document.querySelector(".initials.form");
 
-var timeLeft = 60;
 var currentQuestion = 0;
-var currentTime = timer.textcontent;
-var setInterval;
-
-
+var currentTime = 60;
+var timerInterval;
+var currentQuestionIndex= 0;
 
 
 
@@ -63,7 +61,7 @@ var questions = [{
         answer: 'Client'
 },
 ]
-    console.log(questions);
+
 
 
 
@@ -72,14 +70,27 @@ function resetGame() {
     var person_initials = document.querySelector("#person_initials").value;
     localStorage.setitem("highScore", currentTime);
     localStorage.setItem(person_initials, currentTime);
+};
+
+function renderQuestions() {
+    choiceContainer.innerHTML='';
+    questionContainer.classList.remove('hide');
+    console.log(questions[currentQuestionIndex].text)
+    
 }
 // Timer
-startButton.addEventListener("click", function(event) {
-    var event = setInterval(function (){
-        currentTime--;
+startButton.addEventListener("click", function() {
+    renderQuestions();
+    var timerStart = setInterval(function (){
+        if (currentTime >= 0) {
+            timer.textContent= currentTime;
+            currentTime--;
+        } else {
+            timer.textContent= "Game over.";
+            clearInterval(timerInterval);
+        }
     },1000)
 });
 
-// var buttons = document.querySelectorAll(".choice-choice").forEach(function (item){
-//     item.addEventListener("click", checkAnswer);
-// });
+
+
