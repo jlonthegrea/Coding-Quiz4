@@ -36,14 +36,15 @@
             <button class="choice-choice" id="answer7"> </button>
         </div>  
 
-     <div class="end-screen">
+     <div class="end-screen hide">
         <div> 
             <p class="final-score"></p>
         </div>
         <div> 
-            <form action="highscores.html" class="initial-form hide"> 
+            <form class="initial-form"> 
             Enter Initials Here: <input type="text" name="initials" id="person_initials" max="3">
-            <input type="submit" class="submit" onclick="resetGame()">
+            <button type="button" class="submit" onclick="resetGame()">
+                Submit </button>
             </form>
         </div>
     </div>

@@ -66,9 +66,19 @@ var questions = [{
  
 function resetGame() {
     var person_initials = document.querySelector("#person_initials").value;
-    localStorage.setitem("highScore", currentTime);
+    console.log(person_initials);
+    localStorage.setItem("highScore", currentTime);
     localStorage.setItem(person_initials, currentTime);
+    document.replace("highscores.html");
 };
+
+function endGame(){
+    choiceContainer.classList.add("hide");
+    questionContainer.classList.add("hide");
+    endScreen.classList.remove("hide");
+
+}
+
 
 function renderQuestions() {
     choiceContainer.innerHTML='';
@@ -100,6 +110,7 @@ function questionClick (e) {
 
     if (currentQuestionIndex >= questions.length -1){
         console.log("Quiz Over!")
+        endGame();
         return;
     }
     currentQuestionIndex++

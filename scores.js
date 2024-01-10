@@ -1,6 +1,6 @@
 function printHighscores(){
-    var highscores = JSON.parse(window.localStorage.getItem('highscores')) [];
-}
+    var highscores = JSON.parse(window.localStorage.getItem('highscores')) || [];
+
 
 for (var i = 0; i< highscores.length; i += 1){
     var liTag = document.createElement('li');
@@ -8,7 +8,7 @@ for (var i = 0; i< highscores.length; i += 1){
     var olEl = document.getElementById('highscores');
     olEl.appendChild(liTag);
 }
-
+}
 function clearHighscores(){
     window.localStorage.removeItem('highscores');
     window.location.reload();

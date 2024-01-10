@@ -41,11 +41,11 @@ padding: auto;
 justify-content: center;
 }
 .info-box .info-list{
-padding; 15px 30px;
+padding: 15px 30px;
 }
 .info-box .info-list .info{
-margin; 5px 0;
-font size: 20px;
+margin: 5px 0;
+font-size: 20px;
 }
 .info-box .info-list .info span{
 color:blue;
@@ -61,7 +61,7 @@ color:blue;
     width: 50%;
     color:whitesmoke;
     font-weight: bolder;
-    border radius: 10px;
+    border-radius: 10px;
     letter-spacing: 2px;
     background-color: #005bb6;
 }
