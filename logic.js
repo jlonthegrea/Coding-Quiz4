@@ -87,12 +87,12 @@ function renderQuestions() {
     };
 
 function questionClick (e) {
-    if (!e.target.matches('.choices-btn')) {
+    if (!e.target.matches('.choice-btn')) {
         return;
     }
-    var userAnswer = e.target.textContent.split(' ')[2];
+    var userAnswer = e.target.textContent
     console.log(userAnswer);
-    if(userAnswer === questions[currentQuestionIndex].correctAnswer){
+    if(userAnswer === questions[currentQuestionIndex]){
         console.log("CORRECT!")
     } else {
         console.log("WRONG")
@@ -102,7 +102,7 @@ function questionClick (e) {
         console.log("Quiz Over!")
         return;
     }
-    currentQuestionIndex==
+    currentQuestionIndex++
     renderQuestions();
     console.log(userAsnwer === questions[currentQuestionIndex].correctAnswer)
 }
@@ -113,7 +113,7 @@ var startQuiz = function(){
     renderQuestions();
 }
 
-choiceContainer.addEventListener("click", choiceContainer)
+choiceContainer.addEventListener("click", questionClick)
 startButton.addEventListener("click", startQuiz)
 
 // Timer
