@@ -69,7 +69,7 @@ function resetGame() {
     console.log(person_initials);
     localStorage.setItem("highScore", currentTime);
     localStorage.setItem(person_initials, currentTime);
-    document.replace("highscores.html");
+    // document.replace("highscores.html");
 };
 
 function endGame(){
